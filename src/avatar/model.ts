@@ -6,6 +6,13 @@ import mongoose from 'mongoose'
 
 const avatarSchema = new mongoose.Schema({
 
+    chainId: {
+        type: String,
+        unique: true,
+        required: true,
+        index: true,
+    },
+    
     name: {
         type: String,
         unique: true,
