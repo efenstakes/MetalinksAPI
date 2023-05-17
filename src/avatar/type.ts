@@ -3,6 +3,7 @@ import {
     GraphQLID,
     GraphQLObjectType,
     GraphQLFloat,
+    GraphQLList,
 } from 'graphql'
 
 
@@ -38,6 +39,9 @@ const AvatarType = new GraphQLObjectType({
         },
         bgAvatar: {
             type: GraphQLString,
+        },
+        addresses: {
+            type: new GraphQLList(GraphQLString)
         },
         joinedOn: {
             type: GraphQLFloat,

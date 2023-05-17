@@ -50,6 +50,12 @@ const avatarSchema = new mongoose.Schema({
         required: false,
     },
 
+    addresses: {
+        type: [String],
+        required: false,
+        default: [],
+    },
+
     joinedOn: {
         type: Date,
         default: Date.now()
