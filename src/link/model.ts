@@ -6,6 +6,12 @@ import mongoose from 'mongoose'
 
 const linkSchema = new mongoose.Schema({
 
+    txHash: {
+        type: String,
+        unique: true,
+        required: true,
+    },
+    
     chainId: {
         type: String,
         unique: true,

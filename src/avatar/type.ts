@@ -18,6 +18,9 @@ const AvatarType = new GraphQLObjectType({
         _id: {
             type: GraphQLID
         },
+        txHash: {
+            type: GraphQLString
+        },
         chainId: {
             type: GraphQLString
         },
