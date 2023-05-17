@@ -12,7 +12,7 @@ import AvatarType from './type'
 
 
 // get profile
-const getAvatarDetails = {
+export const getAvatarDetails = {
     type: AvatarType,
     args: {
         id: {
@@ -39,7 +39,7 @@ const getAvatarDetails = {
 
 
 // check if name is used
-const isAvatarNameUsed = {
+export const isAvatarNameUsed = {
     type: UsedType,
     args: {
         name: {
@@ -57,13 +57,4 @@ const isAvatarNameUsed = {
 
         return { used }
     }
-}
-
-
-module.exports = {
-
-    isAvatarNameUsed,
-
-    getAvatarDetails,
-
 }
