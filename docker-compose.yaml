@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  server:
+    container_name: MetaLinks
+    restart: always
+    build: .
+    deploy:
+      restart_policy:
+        condition: on-failure
+      mode: replicated
+      replicas: 6
+    ports:
+      - '80:8080'
+    links: 
+      - db
+    depends_on:
+      - db
+
+  db:
+    container_name: metalinks-db
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+      - metalinks-dbdata:/data/db
+
+volumes:
+    metalinks-dbdata:
