@@ -1,6 +1,7 @@
+import path from "path"
 import express, { Express , Response, Request} from "express"
 import cors from 'cors'
-import dotenv from 'dotenv'
+import * as dotenv from 'dotenv'
 import morgan from 'morgan'
 import { graphqlHTTP } from 'express-graphql'
 
@@ -11,18 +12,19 @@ import { connectToDb } from "./utils/database"
 
 // schema
 import schema from './schema'
+import ChainWorker from "./worker"
 
 
 // create express server
 const app: Express = express()
 
 
+// get environment variables
+dotenv.config({ path: path.join(__dirname, '.env')})
+
+
 // connect to db
 connectToDb()
-
-
-// get environment variables
-dotenv.config({ path: './env' })
 
 
 // allow cross origin requests
@@ -48,6 +50,8 @@ app.use(
     graphqlHTTP({ schema, graphiql: true })
 )
 
+
+new ChainWorker()
 
 // start server
 app.listen(8080, ()=> {
