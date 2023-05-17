@@ -14,11 +14,22 @@ export const getLinkDetails = {
     type: LinkType,
     args: {
         id: {
-            type: new GraphQLNonNull(GraphQLString),
+            type: GraphQLString,
+        },
+        chainId: {
+            type: GraphQLString,
         },
     },
-    async resolve(_context, { id }) {
-        const result = await LinkModel.findById(id)
+    async resolve(_context, { id, chainId }) {
+        let result
+
+        if(id) {
+            result = await LinkModel.findById(id)
+        }
+        
+        if(chainId) {
+            result = await LinkModel.findOne({ chainId }).lean()
+        }
 
         return result
     }

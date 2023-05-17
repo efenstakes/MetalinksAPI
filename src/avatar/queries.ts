@@ -16,11 +16,22 @@ const getAvatarDetails = {
     type: AvatarType,
     args: {
         id: {
-            type: new GraphQLNonNull(GraphQLString),
+            type: GraphQLString,
+        },
+        chainId: {
+            type: GraphQLString,
         },
     },
-    async resolve(_context, { id }) {
-        const result = await AvatarModel.findById(id)
+    async resolve(_context, { id, chainId }) {
+        let result
+
+        if(id) {
+            result = await AvatarModel.findById(id)
+        }
+        
+        if(chainId) {
+            result = await AvatarModel.findOne({ chainId }).lean()
+        }
 
         return result
     }
