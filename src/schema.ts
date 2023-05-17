@@ -1,6 +1,6 @@
 import { GraphQLSchema, GraphQLObjectType, GraphQLString, } from 'graphql'
-import { getAvatarDetails, isAvatarNameUsed } from './src/avatar/queries'
-import { getLinkDetails } from './src/link/queries'
+import { getAvatarDetails, isAvatarNameUsed } from './avatar/queries'
+import { getLinkDetails } from './link/queries'
 
 
 
