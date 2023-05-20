@@ -11,7 +11,7 @@ services:
       mode: replicated
       replicas: 6
     ports:
-      - '80:8080'
+      - '8080:8080'
     links: 
       - db
     depends_on:

@@ -20,4 +20,4 @@ RUN yarn build
 EXPOSE 8080
 
 # start the server
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
