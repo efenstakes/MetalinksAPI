@@ -22,6 +22,9 @@ const LinkType = new GraphQLObjectType({
         txHash: {
             type: GraphQLString
         },
+        avatarId: {
+            type: GraphQLString
+        },
         chainId: {
             type: GraphQLString
         },
