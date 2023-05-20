@@ -1,6 +1,6 @@
 
 // include external libraries
-import mongoose from 'mongoose'
+import mongoose, { Schema } from 'mongoose'
 
 
 
@@ -9,6 +9,12 @@ const linkSchema = new mongoose.Schema({
     txHash: {
         type: String,
         unique: true,
+        required: true,
+    },
+
+    avatarId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Avatar',
         required: true,
     },
     
