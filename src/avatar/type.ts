@@ -5,6 +5,7 @@ import {
     GraphQLFloat,
     GraphQLList,
 } from 'graphql'
+import LinkModel from '../link/model'
 
 
 // import models here
@@ -45,6 +46,13 @@ const AvatarType = new GraphQLObjectType({
         },
         joinedOn: {
             type: GraphQLFloat,
+        },
+
+        links: {
+            type: new GraphQLList(require('../link/type')),
+            async resolve({ _id }, _args) {
+                return LinkModel.find({ avatarId: _id }).lean()
+            }
         },
         
     })
